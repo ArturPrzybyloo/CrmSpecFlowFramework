@@ -1,0 +1,15 @@
+{
+  "webdriver": {
+    "BrowserName": "Chrome",
+    "ScreenshotsPath": "C:\\screenshots\\CRM",
+    "DefaultTimeout": "10",
+    "BrowserLanguage": "en",
+    "Headless" : false
+  },
+  "environment": {
+    "ApplicationName": "CRM",
+    "ApplicationUrl": "https://demo.1crmcloud.com",
+    "UserName": "admin",
+    "Password": "admin"
+  }
+}
