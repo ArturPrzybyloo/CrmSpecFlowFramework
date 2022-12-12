@@ -4,6 +4,7 @@ using CrmSpecFlowFramework.Helpers;
 using CrmSpecFlowFramework.Pages;
 using NUnit.Framework.Internal;
 using OpenQA.Selenium;
+using TechTalk.SpecFlow.Infrastructure;
 
 namespace CrmSpecFlowFramework.Hooks
 {
@@ -18,7 +19,7 @@ namespace CrmSpecFlowFramework.Hooks
 
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
         [BeforeScenario]
-        public void TestSetup()
+        public void TestSetup(ISpecFlowOutputHelper specFlowOutputHelper)
         {
             // Cleanup allure report
             allure.CleanupResultDirectory();
@@ -26,7 +27,7 @@ namespace CrmSpecFlowFramework.Hooks
             // Set up webdriver configuration and initialize logger
             var driverConfig = ConfigProvider.WebDriver;
             var logger = new Logger("logger", InternalTraceLevel.Info, TextWriter.Null);
-            _driver = new WebDriverFactory().GetWebDriver(driverConfig, logger);
+            _driver = new WebDriverFactory().GetWebDriver(driverConfig, logger, specFlowOutputHelper);
             ScenarioContext.Current.Add("currentDriver", _driver);
 
             // Initialize pages
