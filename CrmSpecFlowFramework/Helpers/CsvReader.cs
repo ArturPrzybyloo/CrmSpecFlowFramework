@@ -39,6 +39,7 @@ using System.IO;
 
         public void DeleteCsvFile()
         {
+            // Delete file
             File.Delete(_filePath);
         }
     }
