@@ -14,12 +14,6 @@ namespace CrmSpecFlowFramework.Pages
         public By ReportsPage => By.LinkText("Reports");
         public By ActivityLogPage => By.LinkText("Activity Log");
 
-        public SalesAndMarketingPage GoToSalesAndMarketing()
-        {
-            Click(SalesAndMarketing);
-            return new SalesAndMarketingPage(Driver);
-        }
-
         public ContactsPage GoToContacts()
         {
             HoverAndClick(SalesAndMarketing, ContactPage);

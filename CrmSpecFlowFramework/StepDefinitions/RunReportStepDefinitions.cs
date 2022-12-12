@@ -19,6 +19,7 @@ namespace CrmSpecFlowFramework.StepDefinitions
         [Given(@"User is on Reports Page")]
         public void GivenUserIsOnReportsPage()
         {
+            // Navigate to Reports
             navigationBar = new NavigationBar(_driver);
             navigationBar.GoToReports();
         }
@@ -26,6 +27,7 @@ namespace CrmSpecFlowFramework.StepDefinitions
         [Given(@"User search for '(.*)' Report")]
         public void GivenUserSearchForReport(string reportType)
         {
+            // Search for report type
             reportsPage = new ReportsPage(_driver);
             reportsPage.SearchForReport(reportType);
         }
@@ -33,6 +35,7 @@ namespace CrmSpecFlowFramework.StepDefinitions
         [When(@"User run report")]
         public void WhenUserRunReport()
         {
+            // Run report
             projectsReportPage = new ProjectsReportPage(_driver);
             projectsReportPage.RunReport();
         }
@@ -40,12 +43,14 @@ namespace CrmSpecFlowFramework.StepDefinitions
         [Then(@"Verify reports result in table")]
         public void ThenVerifyReportsResultInTable()
         {
+            // Verify that result table is not empty
             projectsReportPage.VerifyReportResults();
         }
 
         [Then(@"Export report as csv file and verify result are not empty")]
         public void ThenExportReportAsCsvFileAndVerifyResultAreNotEmpty()
         {
+            // Download CSV File and verify that it is not empty
             projectsReportPage.ExportReportAndVerifyResults();
         }
     }

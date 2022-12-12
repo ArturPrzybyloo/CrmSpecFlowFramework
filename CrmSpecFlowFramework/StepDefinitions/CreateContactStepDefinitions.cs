@@ -21,6 +21,7 @@ namespace CrmSpecFlowFramework.StepDefinitions
         [Given(@"User is on Create Contact Page")]
         public void GivenUserIsOnCreateContactPage()
         {
+            // Naviage to Contancts => Create Contact
             navigationBar = new NavigationBar(_driver);
             var contacts = navigationBar.GoToContacts();
             contacts.ClickCreateContact();
@@ -29,6 +30,7 @@ namespace CrmSpecFlowFramework.StepDefinitions
         [When(@"Create new contact with category '(.*)' and role '(.*)'")]
         public void WhenCreateNewContactWithCategoryAndRole(string category, string role)
         {
+            // Create new contact and return user object
             createContactPage = new CreateContactPage(_driver);
             var user = createContactPage.CreateContact(category, role);
             this.user = user;
@@ -37,6 +39,7 @@ namespace CrmSpecFlowFramework.StepDefinitions
         [Then(@"Verify that Contact is created")]
         public void ThenVerifyThatContactIsCreated()
         {
+            // Verify creation of user
             createContactPage.VerifyCreatingContact(this.user);
         }
     }
