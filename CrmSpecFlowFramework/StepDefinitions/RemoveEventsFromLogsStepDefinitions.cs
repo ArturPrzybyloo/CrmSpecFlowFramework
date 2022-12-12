@@ -7,9 +7,9 @@ namespace CrmSpecFlowFramework.StepDefinitions
     public sealed class RemoveEventsFromLogsStepDefinitions
     {
         NavigationBar navigationBar;
-        ReportsPage reportsPage;
-        ProjectsReportPage projectsReportPage;
+        ActivityLogPage activityLogPage;
         private readonly IWebDriver _driver;
+        List<string> _rows;
 
         public RemoveEventsFromLogsStepDefinitions()
         {
@@ -19,21 +19,22 @@ namespace CrmSpecFlowFramework.StepDefinitions
         [Given(@"User is on Activity Log Page")]
         public void GivenUserIsOnActivityLogPage()
         {
-            throw new PendingStepException();
+            navigationBar = new NavigationBar(_driver);
+            navigationBar.GoToActivityLog();
         }
 
-        [When(@"User deletes first '([^']*)' Rows")]
-        public void WhenUserDeletesFirstRows(string p0)
+        [When(@"User deletes first '(.*)' Rows")]
+        public void WhenUserDeletesFirstRows(int numbersOfRows)
         {
-            throw new PendingStepException();
+            activityLogPage = new ActivityLogPage(_driver);
+            _rows = activityLogPage.GetRowsContent(numbersOfRows);
+            activityLogPage.DeleteItems(numbersOfRows);
         }
 
-        [Then(@"Items are deleted")]
-        public void ThenItemsAreDeleted()
+        [Then(@"Verify that '(.*)' Items are deleted")]
+        public void ThenVerifyThatItemsAreDeleted(int itemsDeleted)
         {
-            throw new PendingStepException();
+            activityLogPage.VerifyDeletionOfRows(itemsDeleted, _rows);
         }
-
-
     }
 }

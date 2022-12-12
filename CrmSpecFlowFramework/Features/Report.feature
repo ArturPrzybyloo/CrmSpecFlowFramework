@@ -10,8 +10,8 @@ Scenario: Run Report
 	Then Export report as csv file and verify result are not empty
 
 
-#@RemoveReportsFromLog
-#Scenario: Remove Event From Activity Log
-#	Given User is on Activity Log Page
-#	When  User deletes first '3' Rows
-#	Then Items are deleted
+@RemoveReportsFromLog
+Scenario: Remove Event From Activity Log
+	Given User is on Activity Log Page
+	When User deletes first '3' Rows
+	Then Verify that '3' Items are deleted

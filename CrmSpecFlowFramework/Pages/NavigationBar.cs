@@ -12,6 +12,7 @@ namespace CrmSpecFlowFramework.Pages
         public By ContactPage => By.LinkText("Contacts");
         public By ReportsAndSettings => By.XPath("//a[@title='Reports & Settings']");
         public By ReportsPage => By.LinkText("Reports");
+        public By ActivityLogPage => By.LinkText("Activity Log");
 
         public SalesAndMarketingPage GoToSalesAndMarketing()
         {
@@ -33,6 +34,14 @@ namespace CrmSpecFlowFramework.Pages
             var reportsPage = new ReportsPage(Driver);
             reportsPage.IsReportPageDisplayed();
             return reportsPage;
+        }
+
+        public ActivityLogPage GoToActivityLog()
+        {
+            HoverAndClick(ReportsAndSettings, ActivityLogPage);
+            var activityLog = new ActivityLogPage(Driver);
+            activityLog.IsActivityLogPageDisplayed();
+            return activityLog;
         }
     }
 }

@@ -43,11 +43,13 @@ namespace CrmSpecFlowFramework.Pages
             }
             catch (Exception)
             {
-                throw new Exception("Element is still visible");
+                throw new Exception($"Element: {locator} is still visible");
             }
         }
 
         protected bool WaitTillElementContainsText(By locator, string text) => Wait.Until(EC.TextToBePresentInElement(LocateElement(locator), text));
+        protected bool WaitTillElementNotContainsText(By locator, string text) => Wait.Until(EC.InvisibilityOfElementWithText(locator, text));
+        protected IAlert WaitForAlertPresence() => Wait.Until(EC.AlertIsPresent());
 
         protected void ClickOnElementAfterWaiting(By locator) => Wait.Until(EC.ElementIsVisible(locator)).Click();
         protected void ClickOnClickableElement(By locator) => Wait.Until(EC.ElementToBeClickable(locator)).Click();
